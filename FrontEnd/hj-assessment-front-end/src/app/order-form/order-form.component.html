@@ -1,0 +1,36 @@
+<h2 class=>ORDER FORM</h2>
+<div class="name-container">
+	<label class="input-label" for="firstNameBox">First Name: </label>
+	<input class="name-input" id="firstNameBox" [(ngModel)]="orderForm.firstName" [disabled]="isSubmitted">
+	<label class="input-label" for="lastNameBox">Last Name: </label>
+	<input class="name-input" id="lastNameBox" [(ngModel)]="orderForm.lastName" [disabled]="isSubmitted">
+	<label class="input-label" for="gradeDropdown">Grade: </label>
+	<select class="grade-dropdown" id="gradeDropdown" [(ngModel)]="orderForm.grade" [disabled]="isSubmitted">
+		<option [ngValue]="null" disabled></option>
+		<option *ngFor="let gradeOption of gradeOptions"
+			[ngValue]="gradeOption">{{gradeOption}}</option>
+	</select>
+</div>
+<label class="input-label" for="addressLine1">Address Line 1: </label>
+<input class="address-1-box" id="addressLine1" [(ngModel)]="orderForm.address1" [disabled]="isSubmitted">
+<label class="input-label" for="addressLine2">Address Line 2: </label>
+<input class="address-2-box" id="addressLine2" [(ngModel)]="orderForm.address2" [disabled]="isSubmitted">
+<div class="city-state-container">
+	<label class="input-label" for="cityBox">City: </label>
+	<input class="input-label" id="cityBox" [(ngModel)]="orderForm.city" [disabled]="isSubmitted"> 
+	<label class="input-label" for="stateDropdown">State: </label>
+	<select class="state-dropdown" id="stateDropdown" [(ngModel)]='orderForm.state' [disabled]="isSubmitted">
+		<option [ngValue]="null" disabled></option>
+		<option *ngFor="let stateOption of stateOptions" [ngValue]="stateOption">
+			{{stateOption}}
+		</option>
+	</select>
+	<label class="input-label" for="zipBox">Zip Code: </label>
+	<input class="input-label" id="zipBox" [(ngModel)]="orderForm.zip" [disabled]="isSubmitted">
+</div>
+
+<button type="submit" [disabled]="isSubmitted" (click)="submit()">SUBMIT</button>
+
+<br />
+
+<p class="order-number" id="orderNumber" *ngIf="isSubmitted">Your Order Number is: {{orderNumber}}</p> 

@@ -1,0 +1,37 @@
+<h2 class=>ORDER LOOKUP</h2>
+<div class="lookup-form-components">
+	<label class="input-label" for="lastNameLookupBox">Last Name: </label>
+	<input class="last-name-lookup-box" id="lastNameLookupBox" [(ngModel)]="lastName"> 
+	<label class="input-label" for="orderIdLookupBox">Order ID: </label>
+	<input class="order-id-lookup-box" id="orderIdLookupBox" [(ngModel)]="orderNumber">
+</div>
+
+<button type="submit" (click)="submit()">SUBMIT</button>
+
+<div *ngIf="isSubmitted">
+	<div class="retrieved-order" *ngIf='!isErrorFound'>
+		<div class="name-container">
+			<label class="input-label" for="firstNameBox">First Name: </label> 
+			<input class="name-input" id="firstNameBox" [(ngModel)]="orderForm.firstName" disabled> 
+			<label class="input-label" for="lastNameBox">Last Name: </label>
+			<input class="name-input" id="lastNameBox" [(ngModel)]="orderForm.lastName" disabled> 
+			<label class="input-label" for="gradeDropdown">Grade: </label>
+			<input class="grade-dropdown" id="gradeDropdown" [(ngModel)]="orderForm.grade" disabled>
+		</div>
+		<label class="input-label" for="addressLine1">Address Line 1: </label>
+		<input class="address-1-box" id="addressLine1" [(ngModel)]="orderForm.address1" disabled>
+		<label class="input-label" for="addressLine2">Address Line 2: </label>
+		<input class="address-2-box" id="addressLine2" [(ngModel)]="orderForm.address2" disabled>
+		<div class="city-state-container">
+			<label class="input-label" for="cityBox">City: </label>
+			<input class="input-label" id="cityBox" [(ngModel)]="orderForm.city" disabled>
+			<label class="input-label" for="stateDropdown">State: </label>
+			<input class="state-dropdown" id="stateDropdown" [(ngModel)]='orderForm.state' disabled>
+			<label class="input-label" for="zipBox">Zip Code: </label>
+			<input class="input-label" id="zipBox" [(ngModel)]="orderForm.zip" disabled>
+		</div>
+	</div>
+	<div class="errorMessage" *ngIf='isErrorFound'>
+		<p>ERROR: Record Not Found</p>
+	</div>
+</div>
